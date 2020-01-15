@@ -4,10 +4,11 @@ import { Route, Link } from "react-router-dom";
 //Components
 import Signup from './components/Signup';
 import Login from './components/Login';
-import ProductList from './components/products/ProductList';
+import FarmerView from './farmer/FarmerView';
 
 //Authentication
 import PrivateRoute from './utils/PrivateRoute';
+
 
 
 
@@ -19,9 +20,10 @@ function App() {
           <Link to="/">Login</Link>
           <Link to="/">Products</Link>
       </div>
-         <Route exact path="/" component={ProductList} />
+         <Route exact path="/" component={FarmerView} />
          <Route  path="/signup" component={Signup} />
          <Route  path="/login" component={Login} />
+         <FarmerView></FarmerView>
   
     </div>
   );

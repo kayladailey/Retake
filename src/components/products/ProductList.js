@@ -2,10 +2,10 @@ import React from 'react';
 import Product from './Product';
 
 
-const ProductList = props => {
-    const deleteProduct = (e, id) => {
+const ProductList = (props) => {
+    const deleteProduct = (e, product) => {
         e.preventDefault();
-        props.deleteProduct(id);
+        props.deleteProduct(product);
     }
     const updateProduct = (e, product) => {
         e.preventDefault();
@@ -14,11 +14,11 @@ const ProductList = props => {
     }
     return(
         <div>
-             {props.products.map(product=>{
+             {props.product.map(product=>{
             return(<div>
                 <Product product={product}></Product>
                 <div className="small-width1">
-                <button onClick={(e) => deleteProduct(e, product.id)}>Delete</button>
+                <button onClick={(e) => deleteProduct(e, product)}>Delete</button>
                 <button onClick={(e) => updateProduct(e, product)}>Update</button>
                 </div>
                 </div>)})}

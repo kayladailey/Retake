@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 
 
 class AddProduct extends Component{
-    constructor(props){
-    this.state={
+    constructor(props) {
+        super(props);
+            this.state= {
         product:{
             product_name:'',
             price: '',
