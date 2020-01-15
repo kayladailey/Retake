@@ -1,63 +1,30 @@
-import React, {useEffect, useState} from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import ProductCard from './AddProduct';
+import React from 'react';
+import Product from './Product';
 
 
-
-
-const ProductList = () =>  {
-    const [productList, setWorkerList] = useState([]);
-    const [workerSearch, setWorkerSearch] = useState('');
-  
-    useEffect(() => {
-      axiosWithAuth().get('/serviceWorkers')
-        .then(res =>{
-          
-          setWorkerList(res.data)
-        })
-        .catch(err => console.log('Error: ', err));
-      
-    }, []);
-  
-    if (!workerList) {
-      return <LoadingError>Loading data...</LoadingError>
+const ProductList = props => {
+    const deleteProduct = (e, id) => {
+        e.preventDefault();
+        props.deleteProduct(id);
     }
-    
-    const searchOnChange = (e) => {
-      setWorkerSearch(e.target.value);
+    const updateProduct = (e, product) => {
+        e.preventDefault();
+        console.log(product)
+        props.editProduct(product)
     }
-    let filteredList = workerList.filter(worker =>
-      worker.fullName.toLowerCase().indexOf(workerSearch.toLowerCase()) !== -1)
-    
-  
-    
-  
-    return (
-      <Container>
-        <Header>
-          <PageHeader>Meet Our Employees</PageHeader>
-          
-        </Header>
-        <SearchName>
-            <input className="inputSearch"
-              type="text"
-              placeholder="Search Employee..." 
-              value={workerSearch}
-              onChange={searchOnChange}
-            
-            />
-          </SearchName>
-        <ListCards>      
-          {filteredList.map((worker) => 
-            
-             <WorkersCard worker={worker} key={worker.id}/>
-             
-             )}
-          
-        </ListCards>
-      
-      </Container>
-    );
-  }
+    return(
+        <div>
+             {props.products.map(product=>{
+            return(<div>
+                <Product product={product}></Product>
+                <div className="small-width1">
+                <button onClick={(e) => deleteProduct(e, product.id)}>Delete</button>
+                <button onClick={(e) => updateProduct(e, product)}>Update</button>
+                </div>
+                </div>)})}
 
-  export default ProductList;
+        </div>
+    )
+}
+
+export default ProductList;
