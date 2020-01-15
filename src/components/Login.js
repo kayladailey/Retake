@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
     state = {
@@ -21,12 +21,10 @@ class Login extends React.Component {
   
     login = e => {
       e.preventDefault();
-      // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
       axiosWithAuth()
         .post('auth/login', this.state.credentials)
         .then(res => {
           localStorage.setItem('token', res.data.payload);
-          // redirect to the apps main page?
           this.props.history.push('/products');
         })
         .catch(err => console.log(err));
@@ -34,23 +32,27 @@ class Login extends React.Component {
   
     render() {
       return (
-           <div>
-          <form onSubmit={this.login}>
+           <div className='form'>
+          <form onSubmit={this.login} >
             <h1>Login</h1>
             <input
               type="text"
               name="username"
+              placeholder="username"
               value={this.state.credentials.username}
               onChange={this.handleChange}
             />
             <input
               type="password"
               name="password"
+              placeholder="password"
               value={this.state.credentials.password}
               onChange={this.handleChange}
             />
-            <button>Log in</button>
+            <button type='submit'>Log in</button>
+            <Link to='/signup'>I do not have an account</Link>
           </form>
+          
         </div>
       );
     }

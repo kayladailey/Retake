@@ -10,7 +10,6 @@ const Signup = props => {
       username: ''
     });
 
-  
     const handleChange = e => {
       setUser({
         ...user,
@@ -80,7 +79,7 @@ const Signup = props => {
               <div>
                 <button type='submit'>Sign Up</button>
               </div>
-                 <Link to='/UserLogin'>I already have an account</Link>
+                 <Link to='/login'>I already have an account</Link>
                
          </div>
         </form>
