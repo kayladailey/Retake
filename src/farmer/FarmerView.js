@@ -31,7 +31,7 @@ updateProduct(e, product){
 this.props.updateProduct(product)
 this.setState({
     product: {
-        name: product.product_name,
+        name: product.name,
         price: product.price,
         height: product.quantity,
         }
@@ -60,7 +60,7 @@ handleChange = (e) => {
           :
           <AddProduct addProduct={this.props.addProduct} />
         }
-          {/* <ProductList products={this.props.products} deleteProduct= {this.props.deleteProduct} editProduct= {this.editProduct}/> */}
+          <ProductList products={this.props.product} deleteProduct= {this.props.deleteProduct} editProduct= {this.editProduct}/>
           
       </div>
     );

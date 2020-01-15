@@ -6,7 +6,7 @@ class AddProduct extends Component{
         super(props);
             this.state= {
         product:{
-            product_name:'',
+            name:'',
             price: '',
             quantity:''
         }}
@@ -16,7 +16,7 @@ changeHandler = e => {
     this.setState({
         product: {
             ...this.state.product,
-            [e.target.product_name]: e.target.value
+            [e.target.name]: e.target.value
         }
     })
 }
@@ -40,7 +40,7 @@ render(){
         <div className='submit-form'>
             <input name='product' type='text' placeholder='Produce' value= {this.state.product.product_name} onChange={this.changeHandler}/>
             <input name='price' type='text' placeholder='Price' value= {this.state.product.price} onChange={this.changeHandler}/>
-            <input name='age' type='text' placeholder='Age' value=              {this.state.product.quantity} onChange={this.changeHandler}/>
+            <input name='quantity' type='text' placeholder='Quantity' value= {this.state.product.quantity} onChange={this.changeHandler}/>
             <button className="submit" onClick={this.addProductHandler}>Submit</button>
         </div>
     )

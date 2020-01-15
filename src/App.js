@@ -23,7 +23,7 @@ function App() {
          <Route exact path="/" component={FarmerView} />
          <Route  path="/signup" component={Signup} />
          <Route  path="/login" component={Login} />
-         <FarmerView></FarmerView>
+      
   
     </div>
   );
